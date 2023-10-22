@@ -570,3 +570,22 @@ h3.my-profession {
     width: 100%;
     display: block;
 }
+
+.contact-title{
+    text-align: center;
+    color: var(--skin-color);
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+.contact-sub-title{
+    text-align: center;
+    color: var(--text-black-900);
+    font-size: 15px;
+    margin-bottom: 60px;
+}
+
+.contact .contact-info-item{
+    flex: 0 0 25%;
+    max-width: 25%;
+    text-align: center;
+}
