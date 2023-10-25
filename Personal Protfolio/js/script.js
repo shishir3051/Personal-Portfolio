@@ -12,10 +12,11 @@ var typed = new Typed(".typing", {
 
 const nav = document.querySelector(".nav"),
     navList = nav.querySelectorAll("li"),
-    totalNavList = navList.length;
-(allSection = document.querySelectorAll(".section")),
-    (totalSection = allSection.length);
-for (let i = 0; i, totalNavList; i++) {
+    totalNavList = navList.length,
+    allSection = document.querySelectorAll(".section"),
+    totalSection = allSection.length;
+
+for (let i = 0; i < totalNavList; i++) {
     const a = navList[i].querySelector("a");
     a.addEventListener("click", function () {
         for (let i = 0; i < totalSection; i++) {
@@ -29,9 +30,11 @@ for (let i = 0; i, totalNavList; i++) {
         }
         this.classList.add("active");
         showSection(this);
+        if (window.innerWidth < 1200) {
+            sidebarSectionTogglerBtn();
+        }
     });
 }
-
 function showSection(element) {
     for (let i = 0; i < totalSection; i++) {
         allSection[i].classList.remove("active");
@@ -40,7 +43,16 @@ function showSection(element) {
     document.querySelector("#" + target).classList.add("active");
 }
 
-
+function updateNav(element) {
+    for (let i = 0; i < totalNavList; i++) {
+        navList[i].querySelector("a").classList.remove("active");
+        const target = element.getAttribute("href").split("#")[1];
+    }
+}
+document.querySelector(".hire-me").addEventListener("click", function () {
+    showSection(this);
+    updateNav(this);
+});
 
 const navTogglerBtn = document.querySelector(".nav-toggler"),
     sidebar = document.querySelector(".sidebar");
@@ -50,7 +62,7 @@ navTogglerBtn.addEventListener("click", () => {
 function sidebarSectionTogglerBtn() {
     sidebar.classList.toggle("open");
     navTogglerBtn.classList.toggle("open");
-    for(let i=0;i<totalSection;i++){
+    for (let i = 0; i < totalSection; i++) {
         allSection[i].classList.toggle("open");
     }
 }
